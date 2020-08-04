@@ -71,25 +71,24 @@ class MSWOA():
                     if np.abs(A)<1:
                         self.X[i, :] = self.gBest_X + D*np.exp(self.b*l)*np.cos(2*np.pi*l)*self.levy(size=30)
                     else:
-                        self.X[i, :] = self.X[i, :] + D*np.exp(self.b*l)*np.cos(2*np.pi*l)*self.levy(size=30)
+                        self.X[i, :] = self.X[i, :] + D*np.exp(self.b*l)*np.cos(2*np.pi*l)*self.levy(size=30)                
                 
-                
-                bound_max = np.dot(np.ones(self.num_particle)[:, np.newaxis], self.x_max[np.newaxis, :])
-                bound_min = np.dot(np.ones(self.num_particle)[:, np.newaxis], self.x_min[np.newaxis, :])
-                idx_too_high = bound_max < self.X
-                idx_too_low = bound_min > self.X
-                bound_max_map = bound_max[idx_too_high] + \
-                                R5*bound_max[idx_too_high]*(bound_max[idx_too_high]-self.X[idx_too_high])/self.X[idx_too_high]
-                bound_min_map = bound_min[idx_too_low] + \
-                                R6*np.abs(bound_min[idx_too_low]*(bound_min[idx_too_low]-self.X[idx_too_low])/self.X[idx_too_low])
-                if np.any(bound_max_map==np.inf) or np.any(bound_min_map==np.inf):                   
-                    print(123)                
-                self.X[idx_too_high] = bound_max_map.copy()
-                self.X[idx_too_low] = bound_min_map.copy()
-                score = self.fit_func(self.X)
-                if np.min(score) < self.gBest_score:
-                    self.gBest_X = self.X[score.argmin()].copy()
-                    self.gBest_score = score.min().copy()
+            bound_max = np.dot(np.ones(self.num_particle)[:, np.newaxis], self.x_max[np.newaxis, :])
+            bound_min = np.dot(np.ones(self.num_particle)[:, np.newaxis], self.x_min[np.newaxis, :])
+            idx_too_high = bound_max < self.X
+            idx_too_low = bound_min > self.X
+            bound_max_map = bound_max[idx_too_high] + \
+                            R5*bound_max[idx_too_high]*(bound_max[idx_too_high]-self.X[idx_too_high])/self.X[idx_too_high]
+            bound_min_map = bound_min[idx_too_low] + \
+                            R6*np.abs(bound_min[idx_too_low]*(bound_min[idx_too_low]-self.X[idx_too_low])/self.X[idx_too_low])
+            if np.any(bound_max_map==np.inf) or np.any(bound_min_map==np.inf):                   
+                print(123)                
+            self.X[idx_too_high] = bound_max_map.copy()
+            self.X[idx_too_low] = bound_min_map.copy()
+            score = self.fit_func(self.X)
+            if np.min(score) < self.gBest_score:
+                self.gBest_X = self.X[score.argmin()].copy()
+                self.gBest_score = score.min().copy()
                 
             self.gBest_curve[self._iter] = self.gBest_score.copy()    
             self._iter = self._iter + 1
