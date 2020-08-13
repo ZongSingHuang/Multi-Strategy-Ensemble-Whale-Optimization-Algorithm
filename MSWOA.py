@@ -69,9 +69,9 @@ class MSWOA():
                 else:                    
                     D = np.abs(self.gBest_X - self.X[i, :])
                     if np.abs(A)<1:
-                        self.X[i, :] = self.gBest_X + D*np.exp(self.b*l)*np.cos(2*np.pi*l)*self.levy(size=30)
+                        self.X[i, :] = self.gBest_X + D*np.exp(self.b*l)*np.cos(2*np.pi*l)*self.levy(size=1)
                     else:
-                        self.X[i, :] = self.X[i, :] + D*np.exp(self.b*l)*np.cos(2*np.pi*l)*self.levy(size=30)                
+                        self.X[i, :] = self.X[i, :] + D*np.exp(self.b*l)*np.cos(2*np.pi*l)*self.levy(size=1)                
                 
             bound_max = np.dot(np.ones(self.num_particle)[:, np.newaxis], self.x_max[np.newaxis, :])
             bound_min = np.dot(np.ones(self.num_particle)[:, np.newaxis], self.x_min[np.newaxis, :])
