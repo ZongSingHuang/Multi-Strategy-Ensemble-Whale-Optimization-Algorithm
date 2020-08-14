@@ -94,7 +94,7 @@ def Griewank(x):
 d = 30
 g = 3000
 p = 20
-times = 1
+times = 30
 table = np.zeros((4, 11))
 table[2, :] = -np.ones(11)*np.inf
 table[3, :] = np.ones(11)*np.inf
