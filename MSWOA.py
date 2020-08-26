@@ -73,9 +73,9 @@ class MSWOA():
                     if p>0.5:                    
                         D = np.abs(self.gBest_X - self.X[i, :])
                         if np.abs(A)<1:
-                            self.X[i, :] = self.gBest_X + D*np.exp(self.b*l)*np.cos(2*np.pi*l)*self.levy(size=30)
+                            self.X[i, :] = self.gBest_X + D*np.exp(self.b*l)*np.cos(2*np.pi*l)*self.levy(size=1)
                         else:
-                            self.X[i, :] = self.X[i, :] + D*np.exp(self.b*l)*np.cos(2*np.pi*l)*self.levy(size=30)
+                            self.X[i, :] = self.X[i, :] + D*np.exp(self.b*l)*np.cos(2*np.pi*l)*self.levy(size=1)
                     else:
                         if np.abs(A)<1:
                             D = np.abs(C*self.gBest_X - self.X[i, :])
