@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 class MSWOA():
     def __init__(self, fit_func, num_dim=30, num_particle=20, max_iter=500,
                  b=1, x_max=1, x_min=0, a_max=2, a_min=0, l_max=1, l_min=-1, a2_max=-1, a2_min=-2,
-                 strategy_init=False, strategy_update=False, strategy_bound=False):
+                 strategy_init=True, strategy_update=True, strategy_bound=True):
         self.fit_func = fit_func        
         self.num_dim = num_dim
         self.num_particle = num_particle
@@ -38,8 +38,11 @@ class MSWOA():
         self.gBest_curve = np.zeros(self.max_iter)
         
         if self.strategy_init==True:
-            self.X = np.random.uniform(low=-1.0, high=1.0, size=[self.num_particle, self.num_dim])
-            self.X = 1 - 2*( np.cos( 4*np.arccos(self.X) ) )**2
+            init_X = np.random.uniform(low=-1.0, high=1.0, size=[1, self.num_dim])
+            self.X = np.zeros((self.num_particle, self.num_dim))
+            for i in range(self.num_particle):
+                self.X[i] = init_X
+                init_X = 1 - 2*( np.cos( 4*np.arccos(init_X) ) )**2
             self.X = (self.X+1) / 2
             self.X = self.X*(self.x_max-self.x_min) + self.x_min
         else:
