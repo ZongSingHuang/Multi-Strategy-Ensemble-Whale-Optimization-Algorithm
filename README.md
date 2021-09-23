@@ -1,5 +1,7 @@
 # Multi-Strategy-Ensemble-Whale-Optimization-Algorithm
-Yuan, X., Miao, Z., Liu, Z., Yan, Z., &amp; Zhou, F. (2020). Multi-Strategy Ensemble Whale Optimization Algorithm and Its Application to Analog Circuits Intelligent Fault Diagnosis. Applied Sciences, 10(11), 3667. doi:10.3390/app10113667
+X. Yuan, Z. Miao, Z. Liu, Z. Yan and F. Zhou, "Multi-Strategy Ensemble Whale Optimization Algorithm and Its Application to Analog Circuits Intelligent Fault Diagnosis", Applied Sciences, vol. 10, no. 11, p. 3667, 2020.
+
+https://doi.org/10.3390/app10113667
 
 1. 重新優化了測試腳本
 
